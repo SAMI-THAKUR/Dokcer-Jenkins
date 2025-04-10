@@ -4,14 +4,16 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    powershell 'wsl docker build -t my-image .'
+                    // Use bat command for Windows instead of sh
+                    bat 'wsl docker build -t my-image .'
                 }
             }
         }
         stage('Run Docker Container') {
             steps {
                 script {
-                    powershell 'wsl docker run -d my-image'
+                    // Use bat command for Windows instead of sh
+                    bat 'wsl docker run -d my-image'
                 }
             }
         }
