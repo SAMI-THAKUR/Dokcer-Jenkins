@@ -4,7 +4,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    bat 'docker build -t my-image:${BUILD_NUMBER} .'
+                    bat 'docker build -t sepm .'
                 }
             }
         }
@@ -16,7 +16,7 @@ pipeline {
                     bat 'docker rm my-container || echo "No container to remove"'
                     
                     // Run the container with a specified name and port mapping
-                    bat 'docker run -d -p 8080:80 --name my-container my-image:${BUILD_NUMBER}'
+                    bat 'docker run -d -p 8080:80 --name my-container sepm'
                     
                     echo 'Application is now accessible at http://localhost:8080'
                 }
